@@ -5,7 +5,11 @@ export type NavItem = {
   href: string;
 };
 
-export function PrimaryNav({ items }: { items: NavItem[] }) {
+interface PrimaryNavProps {
+  items: NavItem[];
+}
+
+export function PrimaryNav({ items }: PrimaryNavProps) {
   return (
     <nav aria-label="Navegación principal" className="bg-primary">
       <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-3 border-t border-black/10 px-2 py-4 text-[11px] tracking-[0.18em] text-secondary sm:flex-nowrap sm:px-6">

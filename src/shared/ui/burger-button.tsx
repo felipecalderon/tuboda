@@ -1,6 +1,10 @@
 import { BurgerIcon } from "./burger-icon";
 
-export function BurgerButton({ onMenuClick }: { onMenuClick?: () => void }) {
+interface BurgerButtonProps {
+  onMenuClick?: () => void;
+}
+
+export function BurgerButton({ onMenuClick }: BurgerButtonProps) {
   return (
     <button
       type="button"

@@ -5,7 +5,7 @@
   --secondary: #3f382f;
   --surface: #f9f6f1;
   --muted: #d5cec3;
-  --font-scale: 2;
+  --font-scale: 1.5;
 }
 
 @theme inline {

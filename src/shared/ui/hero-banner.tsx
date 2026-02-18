@@ -5,12 +5,10 @@ export function HeroBanner({
   imageSrc,
   imageAlt,
   ctaLabel,
-  ctaHref,
 }: {
   imageSrc: string;
   imageAlt: string;
   ctaLabel: string;
-  ctaHref: string;
 }) {
   return (
     <div className="relative overflow-hidden border border-black/10 bg-white">
@@ -23,7 +21,7 @@ export function HeroBanner({
         loading="eager"
       />
 
-      <CTAButton ctaHref={ctaHref} ctaLabel={ctaLabel} />
+      <CTAButton ctaLabel={ctaLabel} />
     </div>
   );
 }

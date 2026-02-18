@@ -1,20 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-export interface ContactBannerSlide {
-  id: string;
-  imageSrc: string;
-  imageAlt: string;
-  logoText: string;
-  phone: string;
-  email: string;
-  website: string;
-  ctaLabel: string;
-  ctaHref: string;
-}
+import { useContactBannerSlider } from "@/shared/hooks/use-contact-banner-slider";
+import type { ContactBannerSlide } from "@/shared/lib/contact-banner-types";
 
 interface ContactBannerSliderProps {
   slides: ContactBannerSlide[];
@@ -25,27 +14,14 @@ export function ContactBannerSlider({
   slides,
   autoPlayMs = 5500,
 }: ContactBannerSliderProps) {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  useEffect(() => {
-    if (slides.length <= 1) return;
-
-    const intervalId = window.setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, autoPlayMs);
-
-    return () => window.clearInterval(intervalId);
-  }, [autoPlayMs, slides.length]);
+  const { activeSlide, prevSlide, nextSlide, goToSlide } = useContactBannerSlider(
+    {
+      slideCount: slides.length,
+      autoPlayMs,
+    }
+  );
 
   if (!slides.length) return null;
-
-  const prevSlide = () => {
-    setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % slides.length);
-  };
 
   return (
     <section className="w-full bg-primary py-8">
@@ -124,7 +100,7 @@ export function ContactBannerSlider({
                 <button
                   key={slide.id}
                   type="button"
-                  onClick={() => setActiveSlide(index)}
+                  onClick={() => goToSlide(index)}
                   aria-label={`Ir al slide ${index + 1}`}
                   className={`h-2 w-7 ${
                     index === activeSlide ? "bg-white" : "bg-white/45"

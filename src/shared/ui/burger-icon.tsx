@@ -1,4 +1,8 @@
-export function BurgerIcon({ className }: { className?: string }) {
+interface BurgerIconProps {
+  className?: string;
+}
+
+export function BurgerIcon({ className }: BurgerIconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
