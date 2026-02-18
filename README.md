@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ExpoBodas
 
-## Getting Started
+Base inicial para una plataforma de novios construida con Next.js (App Router), React Server Components y SSR.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 + React 19
+- TypeScript estricto
+- Tailwind CSS v4
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
+pnpm build
+pnpm start
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Arquitectura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Se usa una estructura por capas y dominio:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/`: rutas y layouts de Next.js (entrypoints).
+- `src/shared/`: piezas reutilizables globales (UI base, config, utilidades).
+- `src/entities/`: modelos y acceso a datos por entidad de negocio.
+- `src/widgets/`: bloques de interfaz compuestos para páginas.
+- `src/views/`: composición final de pantallas.
 
-## Learn More
+La home está en `app/(marketing)/page.tsx` y consume datos SSR desde `src/entities/service/api/get-featured-services.ts`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ver detalle en `docs/ARCHITECTURE.md`.

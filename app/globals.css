@@ -3,24 +3,104 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-scale: 2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-brand);
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-xs: calc(0.75rem * var(--font-scale));
+  --text-sm: calc(0.875rem * var(--font-scale));
+  --text-base: calc(1rem * var(--font-scale));
+  --text-lg: calc(1.125rem * var(--font-scale));
+  --text-xl: calc(1.25rem * var(--font-scale));
+  --text-2xl: calc(1.5rem * var(--font-scale));
+  --text-3xl: calc(1.875rem * var(--font-scale));
+  --text-4xl: calc(2.25rem * var(--font-scale));
+  --text-5xl: calc(3rem * var(--font-scale));
+  --text-6xl: calc(3.75rem * var(--font-scale));
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-brand), "Times New Roman", serif;
+}
+
+/* ─── Animated Border Button ─── */
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@property --border-angle-reverse {
+  syntax: "<angle>";
+  initial-value: 360deg;
+  inherits: false;
+}
+
+/* Thick line container - clips to border region */
+.animated-border-thick {
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+}
+
+.animated-border-thick > span {
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 40%,
+    rgba(255, 255, 255, 0.9) 48%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 0.9) 52%,
+    transparent 60%
+  );
+  animation: border-rotate 4s linear infinite;
+}
+
+/* Thin line container */
+.animated-border-thin {
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+.animated-border-thin > span {
+  background: conic-gradient(
+    from var(--border-angle-reverse),
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 42%,
+    rgba(255, 255, 255, 0.6) 45%,
+    rgba(255, 255, 255, 0.4) 48%,
+    transparent 60%
+  );
+  animation: border-rotate-reverse 6s linear infinite;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes border-rotate-reverse {
+  to {
+    --border-angle-reverse: 0deg;
+  }
 }
