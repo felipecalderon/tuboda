@@ -6,13 +6,13 @@ interface CTAProps {
 }
 export function CTAButton({ ctaHref, ctaLabel }: CTAProps) {
   return (
-    <div className="pointer-events-none absolute inset-0 flex items-center justify-end pr-10 sm:pr-16">
+    <div className="pointer-events-none absolute inset-0 flex items-center justify-end px-10 sm:pr-16">
       <Link
         href={ctaHref}
         className="animated-border-btn pointer-events-auto relative inline-flex items-center justify-center px-8 py-3 text-xs font-semibold tracking-[0.12em] text-white backdrop-blur-[1px] hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
       >
         {/* Background fill */}
-        <span className="absolute inset-0 bg-white/10" />
+        <span className="absolute inset-0 bg-black/30" />
 
         {/* Thick rotating line - clockwise */}
         <span className="animated-border-thick absolute inset-0 overflow-hidden">

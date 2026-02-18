@@ -32,7 +32,7 @@ export function HomeHeader() {
   ];
 
   return (
-    <header className="w-full bg-[#f6f3ee]">
+    <header className="w-full bg-primary">
       <div className="mx-auto max-w-6xl px-6">
         <div className="relative">
           <TopBar logoText="TU BODA" />

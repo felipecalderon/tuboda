@@ -15,7 +15,7 @@ const categoryLabel: Record<WeddingService["category"], string> = {
 export function FeaturedServices({ services }: FeaturedServicesProps) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-10">
-      <h2 className="text-xl tracking-[0.08em] text-[#3f382f] sm:text-2xl">
+      <h2 className="text-xl tracking-[0.08em] text-secondary sm:text-2xl">
         Servicios destacados
       </h2>
 
@@ -28,10 +28,10 @@ export function FeaturedServices({ services }: FeaturedServicesProps) {
             <p className="text-sm tracking-[0.08em] text-black/60">
               {categoryLabel[service.category]}
             </p>
-            <h3 className="mt-2 text-lg text-[#3f382f]">{service.name}</h3>
+            <h3 className="mt-2 text-lg text-secondary">{service.name}</h3>
             <p className="mt-1 text-sm text-black/70">{service.city}</p>
             {service.isPremium ? (
-              <span className="mt-3 inline-flex rounded-full border border-[#3f382f] px-3 py-1 text-xs tracking-[0.08em] text-[#3f382f]">
+              <span className="mt-3 inline-flex rounded-full border border-secondary px-3 py-1 text-xs tracking-[0.08em] text-secondary">
                 Premium
               </span>
             ) : null}

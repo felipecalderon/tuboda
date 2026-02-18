@@ -48,7 +48,7 @@ export function ContactBannerSlider({
   };
 
   return (
-    <section className="w-full bg-[#f6f3ee] py-8">
+    <section className="w-full bg-primary py-8">
       <div className="relative mx-auto h-125 w-full overflow-hidden">
         {slides.map((slide, index) => (
           <article
@@ -69,9 +69,9 @@ export function ContactBannerSlider({
 
             <div className="absolute inset-0 bg-black/35" />
 
-            <div className="absolute right-16 top-1/2 z-10 w-[min(92%,650px)] -translate-y-1/2 bg-white/95 p-6 text-[#2e2923] shadow-xl sm:p-8">
+            <div className="absolute right-16 top-1/2 z-10 w-[min(92%,650px)] -translate-y-1/2 bg-white/95 p-6 text-foreground shadow-xl sm:p-8">
               <div className="grid gap-5 sm:grid-cols-[170px_1fr] sm:items-center">
-                <div className="border border-[#d5cec3] bg-[#f9f6f1] px-4 py-6 text-center text-xl tracking-[0.25em] text-[#3f382f]">
+                <div className="border border-muted bg-surface px-4 py-6 text-center text-xl tracking-[0.25em] text-secondary">
                   {slide.logoText}
                 </div>
 
@@ -89,7 +89,7 @@ export function ContactBannerSlider({
                   </p>
                   <Link
                     href={slide.ctaHref}
-                    className="mt-3 inline-block bg-[#3f382f] px-5 py-3 text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-[#2f2a23]"
+                    className="mt-3 inline-block bg-secondary px-5 py-3 text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-secondary/90"
                   >
                     {slide.ctaLabel}
                   </Link>
