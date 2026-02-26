@@ -3,8 +3,6 @@ import { PrimaryNav } from "@/shared/ui/primary-nav";
 import { TopBar } from "@/shared/ui/top-bar";
 import { mainNavigation } from "@/shared/config/navitems";
 import { BurgerButton } from "@/shared/ui/burger-button";
-import { ContactBannerSlider } from "@/shared/ui/contact-banner-slider";
-import { homeContactSlides } from "@/shared/config/home-contact-slides";
 
 export function HomeHeader() {
   return (

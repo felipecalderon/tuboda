@@ -3,7 +3,7 @@ import { bigMaker } from "../../../app/fonts";
 
 export const SoyNovia = () => {
   return (
-    <div className="py-10">
+    <div className="py-10 overflow-hidden">
       <p className={`${bigMaker.className} text-9xl text-center scale-200`}>
         Soy Novia
       </p>
