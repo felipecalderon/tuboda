@@ -8,7 +8,7 @@ import { homeContactSlides } from "@/shared/config/home-contact-slides";
 
 export function HomeHeader() {
   return (
-    <header className="w-full bg-primary">
+    <header className="bg-primary">
       <div className="mx-auto max-w-6xl px-6">
         <div className="relative">
           <TopBar logoText="TU BODA" />
@@ -22,7 +22,6 @@ export function HomeHeader() {
         <PrimaryNav items={mainNavigation} />
         <TopBar logoText="TU BODA" />
       </div>
-      <ContactBannerSlider slides={homeContactSlides} />
     </header>
   );
 }

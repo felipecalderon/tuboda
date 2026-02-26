@@ -1,31 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
-
-const brandFont = localFont({
-  src: [
-    {
-      path: "./fonts/TheSeasonsRegular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./fonts/TheSeasonsItalic.woff2",
-      weight: "400",
-      style: "italic",
-    },
-    {
-      path: "./fonts/TheSeasonsBold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/TheSeasonsBoldItalic.woff2",
-      weight: "700",
-      style: "italic",
-    },
-  ],
-});
+import { brandFont } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Tu Boda Chile",

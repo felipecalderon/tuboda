@@ -8,7 +8,7 @@ import {
 } from "@/shared/lib/contact-request-schema";
 
 interface UseContactRequestFormParams {
-  onSuccess: () => void;
+  onSuccess?: () => void;
 }
 
 export function useContactRequestForm({
@@ -43,7 +43,9 @@ export function useContactRequestForm({
 
     await new Promise((resolve) => window.setTimeout(resolve, 500));
     reset();
-    onSuccess();
+    if (onSuccess) {
+      onSuccess();
+    }
   });
 
   return {
