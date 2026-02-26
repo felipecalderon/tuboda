@@ -4,35 +4,41 @@ import { BsQuote } from "react-icons/bs";
 
 export const TheWeddingComponent = () => {
   return (
-    <div className="mx-auto max-w-6xl px-6 flex flex-row justify-between">
-      <div className="max-w-1/2">
-        <p className={`${bigMaker.className} text-9xl`}>The</p>
-        <p className="text-5xl -mt-10 pb-10">Wedding</p>
-        <p className="text-lg">
+    <section className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:gap-16">
+      <div className="w-full lg:w-7/12">
+        <p className={`${bigMaker.className} text-[clamp(3rem,18vw,9rem)] leading-none`}>
+          The
+        </p>
+        <p className="pb-6 text-[clamp(1.8rem,9vw,3.6rem)] leading-none sm:pb-8">
+          Wedding
+        </p>
+        <p className="text-sm leading-relaxed sm:text-base">
           Somos el evento presencial de Bodas mas destacado de Chile. Por 12
           años hemos reunido a las empresas, con todos los Novios de la
           Temporada de Bodas en nuestro pais. Creamos esta plataforma online
           para reunir a todas las empresas con trayectoria y puedas encontrar
           todos los servicios que necesita TU BODA en un solo lugar.
         </p>
-        <div className="text-2xl mt-20 flex">
+        <div className="mt-8 flex items-start gap-2 text-lg leading-tight sm:mt-12 sm:text-2xl">
           <BsQuote />
-          <span className="text-center">
+          <span>
             Planifica TU BODA con las empresas verificadas
           </span>
-          <BsQuote className="rotate-180 mt-14" />
+          <BsQuote className="mt-8 rotate-180 sm:mt-14" />
         </div>
       </div>
-      <div className="w-1/3">
-        <p className="text-right text-4xl">TU BODA</p>
+      <div className="w-full lg:w-5/12">
+        <p className="text-left text-3xl leading-none sm:text-right sm:text-4xl">
+          TU BODA
+        </p>
         <div className="flex items-center gap-2">
           <div className="h-px bg-gray-600 flex-1" />
           <span className="text-sm">EXPO CHILE</span>
         </div>
-        <div>
+        <div className="mt-4 sm:mt-6">
           <ContactRequestForm />
         </div>
       </div>
-    </div>
+    </section>
   );
 };

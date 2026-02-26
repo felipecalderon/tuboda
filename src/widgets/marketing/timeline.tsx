@@ -35,21 +35,43 @@ const stagesTop: Stage[] = [
     ],
     note: "Este es el momento donde la inspiración se convierte en realidad.",
   },
+  {
+    range: "6 a 3",
+    unit: "MESES",
+    items: [
+      "Definir menú final",
+      "Elegir argollas",
+      "Mandar invitaciones",
+      "Coordinar trajes del novio",
+      "Confirmar mobiliario y detalles",
+      "Agendar pruebas de vestido",
+    ],
+    note: "Aquí se evitan improvisaciones.",
+  },
+  {
+    range: "3 a 1",
+    unit: "MESES",
+    items: [
+      "Confirmar número final de invitados",
+      "Revisar timing del día",
+      "Confirmar pagos",
+      "Hacer última prueba de vestido",
+      "Coordinar horarios DE Los proveedores",
+    ],
+    note: "La organización ahora se vuelve logística.",
+  },
+  {
+    range: "1 Mes",
+    unit: "",
+    items: [
+      "Delegar responsabilidades",
+      "Preparar kit de emergencia",
+      "Descansar",
+      "Disfrutar el proceso",
+    ],
+    note: "La tranquilidad es parte del look de novia.",
+  },
 ];
-
-const stageBottom: Stage = {
-  range: "6 a 3",
-  unit: "MESES",
-  items: [
-    "Definir menú final",
-    "Elegir argollas",
-    "Mandar invitaciones",
-    "Coordinar trajes del novio",
-    "Confirmar mobiliario y detalles",
-    "Agendar pruebas de vestido",
-  ],
-  note: "Aquí se evitan improvisaciones.",
-};
 
 export function Timeline() {
   return (
@@ -117,15 +139,15 @@ export function Timeline() {
             </div>
 
             <div className="col-start-4 col-span-9 row-start-4 self-start pt-[2%]">
-              <StageRow stage={stageBottom} bottom />
+              <StageRow stage={stagesTop[2]} />
             </div>
 
             <div className="col-start-3 col-span-9 row-start-5 self-start pt-[2%]">
-              <StageRow stage={stagesTop[1]} />
+              <StageRow stage={stagesTop[3]} />
             </div>
 
             <div className="col-start-2 col-span-9 row-start-6 self-start pt-[2%]">
-              <StageRow stage={stagesTop[1]} />
+              <StageRow stage={stagesTop[4]} />
             </div>
           </div>
         </div>
@@ -158,7 +180,7 @@ function StageRow({ stage, bottom }: { stage: Stage; bottom?: boolean }) {
           {stage.items.map((t) => (
             <li key={t}>{t}</li>
           ))}
-          {stage.note && <li className={bottom ? "mt-1" : ""}>{stage.note}</li>}
+          {stage.note && <li className="mt-2 italic">{stage.note}</li>}
         </ul>
       </div>
     </div>

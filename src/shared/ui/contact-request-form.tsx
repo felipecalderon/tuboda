@@ -130,7 +130,7 @@ export function ContactRequestForm({ onSuccess }: ContactRequestFormProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="inline-flex items-center justify-center border border-secondary bg-secondary px-6 py-3 text-xs font-semibold tracking-[0.12em] text-white transition-colors hover:bg-secondary/90 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex w-full items-center justify-center border border-secondary bg-secondary px-4 py-3 text-center text-[11px] font-semibold leading-tight tracking-[0.08em] text-white transition-colors hover:bg-secondary/90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-6 sm:text-xs sm:tracking-[0.12em]"
         >
           {isSubmitting ? "ENVIANDO..." : "BUSCAR PROVEEDORES DE BODA"}
         </button>
