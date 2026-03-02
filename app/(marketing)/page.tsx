@@ -1,6 +1,7 @@
 import { getFeaturedServices } from "@/entities/service/api/get-featured-services";
 import { homeContactSlides } from "@/shared/config/home-contact-slides";
 import { ContactBannerSlider } from "@/shared/ui/contact-banner-slider";
+import { Blog } from "@/widgets/marketing/blog";
 import { FeaturedServices } from "@/widgets/marketing/featured-services";
 import { HomeHeader } from "@/widgets/marketing/home-header";
 import { TheWeddingComponent } from "@/widgets/marketing/the-wedding";
@@ -16,6 +17,7 @@ export default async function MarketingHomePage() {
       <TheWeddingComponent />
       <Timeline />
       <SoyNovia />
+      <Blog />
       <FeaturedServices services={services} />
     </main>
   );
