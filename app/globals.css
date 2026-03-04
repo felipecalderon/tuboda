@@ -39,8 +39,6 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ─── Animated Border Button ─── */
-
 @property --border-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -53,7 +51,6 @@ html {
   inherits: false;
 }
 
-/* Thick line container - clips to border region */
 .animated-border-thick {
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -78,7 +75,6 @@ html {
   animation: border-rotate 4s linear infinite;
 }
 
-/* Thin line container */
 .animated-border-thin {
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -113,4 +109,52 @@ html {
   to {
     --border-angle-reverse: 0deg;
   }
+}
+
+@keyframes reveal-entry {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+main > * {
+  animation: reveal-entry linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 80%;
+}
+
+@supports not (animation-timeline: view()) {
+  main > * {
+    opacity: 0;
+    transform: translateY(60px) scale(0.92);
+    filter: blur(8px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  main > .is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+main::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent 0%, var(--primary) 100%);
+  pointer-events: none;
+  z-index: 50;
 }

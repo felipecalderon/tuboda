@@ -2,11 +2,7 @@
 
 import { useBusinessRequestForm } from "../hooks/use-business-request-form";
 
-interface BusinessRequestFormProps {
-  onSuccess?: () => void;
-}
-
-export function BusinessRequestForm({ onSuccess }: BusinessRequestFormProps) {
+export function BusinessRequestForm() {
   const { register, errors, isSubmitting, onSubmit } = useBusinessRequestForm({
     onSuccess: (values) => {
       console.log(values);
@@ -88,7 +84,7 @@ export function BusinessRequestForm({ onSuccess }: BusinessRequestFormProps) {
         {options.map((option) => (
           <label
             key={option.value}
-            className="relative flex flex-col p-4 rounded-xl border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer has-[:checked]:border-indigo-600 has-[:checked]:bg-indigo-50 has-[:checked]:shadow-md"
+            className="relative flex flex-col p-4 rounded-xl border border-gray-200 bg-white hover:border-gray-300 transition-all cursor-pointer has-checked:border-indigo-600 has-checked:bg-indigo-50 has-checked:shadow-md"
           >
             <input
               type="radio"

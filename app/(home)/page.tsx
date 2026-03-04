@@ -16,7 +16,7 @@ import { Timeline } from "@/widgets/marketing/timeline";
 export default async function MarketingHomePage() {
   const services = await getFeaturedServices();
   return (
-    <main>
+    <main className="bottom-fade">
       <HomeHeader />
       <PrimaryNav items={mainNavigation} />
       <ContactBannerSlider slides={homeContactSlides} />

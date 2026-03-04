@@ -19,7 +19,6 @@ export function useBusinessRequestForm({
     handleSubmit,
     setError,
     clearErrors,
-    reset,
     formState: { errors, isSubmitting },
   } = useForm<EventTypeFormValues>({
     defaultValues: businessRequestDefaultValues,
