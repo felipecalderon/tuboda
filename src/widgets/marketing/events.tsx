@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const Events = () => {
   return (
-    <div>
+    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 space-y-10 overflow-x-hidden">
       <p className="text-left text-3xl leading-none sm:text-9xl">TU BODA</p>
       <div className="flex items-center gap-2 max-w-xl">
         <div className="h-px bg-gray-600 flex-1" />

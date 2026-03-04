@@ -35,6 +35,10 @@ body {
   font-family: var(--font-brand), "Times New Roman", serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* ─── Animated Border Button ─── */
 
 @property --border-angle {

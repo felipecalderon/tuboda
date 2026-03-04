@@ -1,7 +1,5 @@
 import { HeroBanner } from "@/shared/ui/hero-banner";
-import { PrimaryNav } from "@/shared/ui/primary-nav";
 import { TopBar } from "@/shared/ui/top-bar";
-import { mainNavigation } from "@/shared/config/navitems";
 import { BurgerButton } from "@/shared/ui/burger-button";
 
 export function HomeHeader() {
@@ -16,8 +14,8 @@ export function HomeHeader() {
           imageSrc="/hero-banner.jpg"
           imageAlt="Novios celebrando en su boda"
           ctaLabel="COMENZAR MI PLANIFICACION"
+          ctaScrollTargetId="the-wedding"
         />
-        <PrimaryNav items={mainNavigation} />
         <TopBar logoText="TU BODA" />
       </div>
     </header>

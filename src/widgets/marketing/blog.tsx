@@ -1,9 +1,6 @@
 import { BsQuote } from "react-icons/bs";
 import { bigMaker } from "../../../app/fonts";
 import Image from "next/image";
-import { EventLogo } from "@/shared/ui/event-logo";
-import { events } from "@/shared/config/events";
-import { Events } from "./events";
 
 export const Blog = () => {
   return (
@@ -158,7 +155,6 @@ export const Blog = () => {
           />
         </div>
       </div>
-      <Events />
     </div>
   );
 };

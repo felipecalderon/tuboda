@@ -5,7 +5,10 @@ import { LogoTuBoda } from "@/shared/ui/logo-tuboda";
 
 export const TheWeddingComponent = () => {
   return (
-    <section className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:gap-16">
+    <section
+      id="the-wedding"
+      className="mx-auto flex w-full max-w-6xl scroll-mt-24 flex-col gap-10 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:gap-16"
+    >
       <div className="w-full lg:w-7/12">
         <p
           className={`${bigMaker.className} text-[clamp(3rem,18vw,9rem)] leading-none`}
