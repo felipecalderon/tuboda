@@ -2,18 +2,18 @@
 
 import { useForm, type FieldPath } from "react-hook-form";
 import {
-  contactRequestDefaultValues,
-  contactRequestSchema,
-  type ContactFormValues,
-} from "@/shared/schemas/contact-request-schema";
+  businessRequestDefaultValues,
+  EventTypeFormValues,
+  eventTypeSchema,
+} from "@/shared/schemas/business-request-schema";
 
-interface UseContactRequestFormParams {
-  onSuccess?: () => void;
+interface UseBusinessRequestFormParams {
+  onSuccess?: (values: EventTypeFormValues) => void;
 }
 
-export function useContactRequestForm({
+export function useBusinessRequestForm({
   onSuccess,
-}: UseContactRequestFormParams) {
+}: UseBusinessRequestFormParams) {
   const {
     register,
     handleSubmit,
@@ -21,19 +21,20 @@ export function useContactRequestForm({
     clearErrors,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormValues>({
-    defaultValues: contactRequestDefaultValues,
+  } = useForm<EventTypeFormValues>({
+    defaultValues: businessRequestDefaultValues,
   });
 
   const onSubmit = handleSubmit(async (values) => {
     clearErrors();
-    const parsed = contactRequestSchema.safeParse(values);
+
+    const parsed = eventTypeSchema.safeParse(values);
 
     if (!parsed.success) {
       for (const issue of parsed.error.issues) {
         const fieldName = issue.path[0];
         if (typeof fieldName === "string") {
-          setError(fieldName as FieldPath<ContactFormValues>, {
+          setError(fieldName as FieldPath<EventTypeFormValues>, {
             message: issue.message,
           });
         }
@@ -41,11 +42,8 @@ export function useContactRequestForm({
       return;
     }
 
-    await new Promise((resolve) => window.setTimeout(resolve, 500));
-    reset();
-    if (onSuccess) {
-      onSuccess();
-    }
+    await new Promise((r) => setTimeout(r, 500));
+    onSuccess?.(parsed.data);
   });
 
   return {

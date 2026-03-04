@@ -1,11 +1,6 @@
 "use client";
 
 import { useContactRequestForm } from "@/shared/hooks/use-contact-request-form";
-import {
-  budgetRangeOptions,
-  ceremonyTypeOptions,
-} from "@/shared/lib/contact-request-schema";
-
 interface ContactRequestFormProps {
   onSuccess?: () => void;
 }

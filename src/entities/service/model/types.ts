@@ -12,3 +12,12 @@ export interface WeddingService {
   city: string;
   isPremium: boolean;
 }
+
+export type EventData = {
+  anno: number;
+  diaInicio: string;
+  diaFin: string;
+  mes: string;
+  eventPlace: string;
+  logoSrc: string;
+};

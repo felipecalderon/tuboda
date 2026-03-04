@@ -1,6 +1,9 @@
 import { BsQuote } from "react-icons/bs";
 import { bigMaker } from "../../../app/fonts";
 import Image from "next/image";
+import { EventLogo } from "@/shared/ui/event-logo";
+import { events } from "@/shared/config/events";
+import { Events } from "./events";
 
 export const Blog = () => {
   return (
@@ -84,6 +87,78 @@ export const Blog = () => {
           </div>
         </div>
       </div>
+      <p className="text-xl text-center py-10">
+        La estética que define esta nueva era bridal
+      </p>
+      <div className="flex flex-col sm:flex-row gap-10">
+        <div className="w-full sm:w-2/3">
+          <div className="min-w-0 pt-0 lg:pt-2 text-lg">
+            <ul className="list-decimal pl-5 wrap-break-word">
+              <li>
+                Belleza real, no artificial Piel luminosa, maquillajes que
+                realzan sin transformar. El objetivo ya no es “verse producida”,
+                sino verse auténtica y pulida.
+              </li>
+              <li>
+                Peinados con intención Moños bajos, ondas suaves, texturas
+                controladas. Nada está fuera de lugar, pero nada se ve rígido.
+              </li>
+              <li>
+                Vestidos que hablan de la novia, no del diseñador Cortes
+                limpios, siluetas claras, telas nobles. Vestidos que envejecen
+                bien en el recuerdo y en las fotos.
+              </li>
+            </ul>
+          </div>
+          <div className="mt-8 flex items-start gap-2 text-lg sm:mt-12 sm:text-2xl">
+            <BsQuote className="shrink-0" />
+            <p className="w-fit min-w-0">
+              Una serie creada para novias que no siguen tendencias, las
+              interpretan con criterio, estilo y decisión.
+            </p>
+            <BsQuote className="mt-8 rotate-180 shrink-0 sm:mt-14" />
+          </div>
+        </div>
+        <Image
+          src="/assets/blog3.png"
+          alt="Novia del blog"
+          width={488}
+          height={1000}
+          className="w-full sm:w-1/3 rounded-2xl"
+        />
+      </div>
+      <div className="w-full">
+        <div className="min-w-0 pt-0 lg:pt-2 text-lg">
+          <p className="text-xl pt-10">El nuevo lujo en las Bodas</p>
+          <p className="text-lg pb-10">El lujo hoy no es exceso, es:</p>
+          <ul className="list-disc pl-5 wrap-break-word">
+            <li>Tiempo bien invertido</li>
+            <li>Proveedores correctos</li>
+            <li>Decisiones tomadas con calma</li>
+            <li>Una estética que se siente natural</li>
+          </ul>
+          <p className="py-6">
+            Las bodas más elegantes no son las más grandes, son las mejor
+            pensadas.
+          </p>
+          <p>
+            Después de años en la industria, hay algo claro: las bodas que
+            realmente funcionan no siguen todas las tendencias, siguen una línea
+            clara desde el inicio. Cuando una novia entiende quién es y qué
+            quiere transmitir, todo fluye: el vestido, la decoración, la música,
+            la experiencia. Ese es el verdadero secreto de una boda bien
+            lograda.
+          </p>
+          <Image
+            src="/assets/javieradiaz.png"
+            alt="Novia del blog"
+            width={400}
+            height={600}
+            className="w-56 rounded-2xl ml-auto"
+          />
+        </div>
+      </div>
+      <Events />
     </div>
   );
 };
