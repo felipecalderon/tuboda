@@ -19,6 +19,7 @@ import { HOME_HEADER_CONTENT } from "@/widgets/marketing/data/home-header-data";
 import { SOY_EMPRESA_CONTENT } from "@/widgets/marketing/data/soy-empresa-data";
 import { SOY_NOVIA_CONTENT } from "@/widgets/marketing/data/soy-novia-data";
 import { THE_WEDDING_CONTENT } from "@/widgets/marketing/data/the-wedding-data";
+import { auth0 } from "@/shared/config/auth0.config";
 import {
   TIMELINE_HEADER,
   TIMELINE_IMAGES,
@@ -26,14 +27,18 @@ import {
   TIMELINE_STAGE_LAYOUT,
 } from "@/widgets/marketing/data/timeline-data";
 
+export const dynamic = "force-dynamic";
+
 export default async function MarketingHomePage() {
   const services = await getFeaturedServices();
+  const session = await auth0.getSession();
 
   return (
     <main className="bottom-fade">
       <HomeHeader
         logoText={HOME_HEADER_CONTENT.logoText}
         hero={HOME_HEADER_CONTENT.hero}
+        isAuthenticated={Boolean(session?.user)}
       />
       <PrimaryNav items={mainNavigation} />
       <ContactBannerSlider slides={homeContactSlides} />

@@ -8,6 +8,7 @@ import { HOME_HEADER_CONTENT } from "./data/home-header-data";
 
 type HomeHeaderProps = {
   logoText?: string;
+  isAuthenticated?: boolean;
   hero?: {
     imageSrc: string;
     imageAlt: string;
@@ -18,6 +19,7 @@ type HomeHeaderProps = {
 
 export function HomeHeader({
   logoText = HOME_HEADER_CONTENT.logoText,
+  isAuthenticated = false,
   hero = HOME_HEADER_CONTENT.hero,
 }: HomeHeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,14 +65,14 @@ export function HomeHeader({
                 aria-label="Menú de usuario"
                 className="absolute right-0 z-50 mt-3 w-44 rounded-md border border-black/10 bg-white py-2 text-sm shadow-lg"
               >
-                <button
-                  type="button"
+                <a
+                  href={isAuthenticated ? "/dashboard" : "/auth/login"}
                   role="menuitem"
-                  className="w-full px-4 py-2 text-left text-black/80 hover:bg-black/5"
+                  className="block w-full px-4 py-2 text-left text-black/80 hover:bg-black/5"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Iniciar sesión
-                </button>
+                  {isAuthenticated ? "Mi cuenta" : "Iniciar sesión"}
+                </a>
               </div>
             ) : null}
           </div>
