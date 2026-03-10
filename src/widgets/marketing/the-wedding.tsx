@@ -1,41 +1,56 @@
 import { ContactRequestForm } from "@/shared/ui/contact-request-form";
-import { bigMaker } from "../../../app/fonts";
-import { BsQuote } from "react-icons/bs";
 import { LogoTuBoda } from "@/shared/ui/logo-tuboda";
+import { THE_WEDDING_CONTENT } from "@/widgets/marketing/data/the-wedding-data";
+import type { ReactNode } from "react";
+import { bigMaker } from "../../../app/fonts";
+import { QuoteBlock } from "./components/quote-block";
 
-export const TheWeddingComponent = () => {
+type TheWeddingContent = {
+  titlePrimary: string;
+  titleSecondary: string;
+  description: string;
+  quote: string;
+};
+
+type TheWeddingComponentProps = {
+  id?: string;
+  content?: TheWeddingContent;
+  logoSlot?: ReactNode;
+  formSlot?: ReactNode;
+};
+
+export const TheWeddingComponent = ({
+  id = "the-wedding",
+  content = THE_WEDDING_CONTENT,
+  logoSlot = <LogoTuBoda />,
+  formSlot = <ContactRequestForm />,
+}: TheWeddingComponentProps) => {
   return (
     <section
-      id="the-wedding"
+      id={id}
       className="mx-auto flex w-full max-w-6xl scroll-mt-24 flex-col gap-10 px-4 py-12 sm:px-6 lg:flex-row lg:items-start lg:gap-16"
     >
       <div className="w-full lg:w-7/12">
         <p
           className={`${bigMaker.className} text-[clamp(3rem,18vw,9rem)] leading-none`}
         >
-          The
+          {content.titlePrimary}
         </p>
         <p className="pb-6 text-[clamp(1.8rem,9vw,3.6rem)] leading-none sm:pb-8">
-          Wedding
+          {content.titleSecondary}
         </p>
         <p className="text-sm font-serif leading-relaxed sm:text-base">
-          Somos el evento presencial de Bodas mas destacado de Chile. Por 12
-          años hemos reunido a las empresas, con todos los Novios de la
-          Temporada de Bodas en nuestro pais. Creamos esta plataforma online
-          para reunir a todas las empresas con trayectoria y puedas encontrar
-          todos los servicios que necesita TU BODA en un solo lugar.
+          {content.description}
         </p>
-        <div className="mt-8 flex items-start gap-2 text-lg leading-tight sm:mt-12 sm:text-2xl">
-          <BsQuote />
-          <span>Planifica TU BODA con las empresas verificadas</span>
-          <BsQuote className="mt-8 rotate-180 sm:mt-14" />
-        </div>
+        <QuoteBlock
+          text={content.quote}
+          className="mt-8 flex items-start gap-2 text-lg leading-tight sm:mt-12 sm:text-2xl"
+          endQuoteClassName="mt-8 rotate-180 shrink-0 sm:mt-14"
+        />
       </div>
       <div className="w-full lg:w-5/12">
-        <LogoTuBoda />
-        <div className="mt-4 sm:mt-6">
-          <ContactRequestForm />
-        </div>
+        {logoSlot}
+        <div className="mt-4 sm:mt-6">{formSlot}</div>
       </div>
     </section>
   );

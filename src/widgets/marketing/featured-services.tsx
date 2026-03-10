@@ -1,18 +1,15 @@
 import type { WeddingService } from "@/entities/service/model/types";
+import { SERVICE_CATEGORY_LABEL } from "./data/featured-services-data";
 
 interface FeaturedServicesProps {
   services: WeddingService[];
+  categoryLabel?: Record<WeddingService["category"], string>;
 }
 
-const categoryLabel: Record<WeddingService["category"], string> = {
-  fotografia: "Fotografia",
-  banqueteria: "Banqueteria",
-  vestuario: "Vestuario",
-  locaciones: "Locaciones",
-  decoracion: "Decoracion",
-};
-
-export function FeaturedServices({ services }: FeaturedServicesProps) {
+export function FeaturedServices({
+  services,
+  categoryLabel = SERVICE_CATEGORY_LABEL,
+}: FeaturedServicesProps) {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
       <h2 className="text-lg tracking-[0.08em] text-secondary sm:text-2xl">

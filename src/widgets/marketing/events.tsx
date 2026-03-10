@@ -1,45 +1,48 @@
-import { events } from "@/shared/config/events";
+import type { EventData } from "@/entities/service/model/types";
+import { events as defaultEvents } from "@/shared/config/events";
 import { EventLogo } from "@/shared/ui/event-logo";
 import { HorizontalGalleryST } from "@/shared/ui/gallery-horizontal-static";
 import Image from "next/image";
+import { SectionShell } from "./components/section-shell";
+import { EVENTS_CONTENT } from "./data/events-data";
 
-export const Events = () => {
+type EventsProps = {
+  content?: typeof EVENTS_CONTENT;
+  items?: EventData[];
+};
+
+export const Events = ({
+  content = EVENTS_CONTENT,
+  items = defaultEvents,
+}: EventsProps) => {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 space-y-10 overflow-x-hidden">
-      <p className="text-left text-3xl leading-none sm:text-9xl">TU BODA</p>
+    <SectionShell>
+      <p className="text-left text-3xl leading-none sm:text-9xl">{content.title}</p>
       <div className="flex items-center gap-2 max-w-xl">
         <div className="h-px bg-gray-600 flex-1" />
-        <span className="text-3xl">EXPO CHILE 2026</span>
+        <span className="text-3xl">{content.subtitle}</span>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2">
-        {events.map((event) => (
+        {items.map((event) => (
           <EventLogo key={`${event.eventPlace}-${event.mes}`} {...event} />
         ))}
       </div>
       <div className="bg-white w-fit rounded-2xl px-6 py-3 shadow-2xl cursor-pointer hover:scale-105 hover:shadow-lg transition-all mx-auto">
         <Image
-          src="/logos/passline.png"
-          alt="Logo passline al link de pago del evento"
-          width={400}
-          height={200}
+          src={content.passlineLogo.src}
+          alt={content.passlineLogo.alt}
+          width={content.passlineLogo.width}
+          height={content.passlineLogo.height}
         />
       </div>
       <Image
-        src="/logos/bridalmarket.png"
-        alt="Logo bridal market"
-        width={400}
-        height={400}
+        src={content.bridalMarketLogo.src}
+        alt={content.bridalMarketLogo.alt}
+        width={content.bridalMarketLogo.width}
+        height={content.bridalMarketLogo.height}
         className="py-10 mx-auto"
       />
-      <HorizontalGalleryST
-        images={[
-          "/assets/tuboda-evento1.jpg",
-          "/assets/tuboda-evento2.jpg",
-          "/assets/tuboda-evento3.jpg",
-          "/assets/tuboda-evento4.jpg",
-          "/assets/tuboda-evento5.jpg",
-        ]}
-      />
-    </div>
+      <HorizontalGalleryST images={[...content.galleryImages]} />
+    </SectionShell>
   );
 };
