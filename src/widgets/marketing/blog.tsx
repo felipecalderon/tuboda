@@ -1,160 +1,138 @@
-import { BsQuote } from "react-icons/bs";
-import { bigMaker } from "../../../app/fonts";
 import Image from "next/image";
+import { bigMaker } from "../../../app/fonts";
+import { QuoteBlock } from "./components/quote-block";
+import { SectionShell } from "./components/section-shell";
+import {
+  BLOG_HEADER,
+  BLOG_IMAGES,
+  BLOG_INTRO,
+  BLOG_QUOTES,
+  BLOG_SECTIONS,
+} from "./data/blog-data";
 
-export const Blog = () => {
+type BlogProps = {
+  header?: typeof BLOG_HEADER;
+  intro?: typeof BLOG_INTRO;
+  quotes?: typeof BLOG_QUOTES;
+  sections?: typeof BLOG_SECTIONS;
+  images?: typeof BLOG_IMAGES;
+};
+
+export const Blog = ({
+  header = BLOG_HEADER,
+  intro = BLOG_INTRO,
+  quotes = BLOG_QUOTES,
+  sections = BLOG_SECTIONS,
+  images = BLOG_IMAGES,
+}: BlogProps) => {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6 space-y-10 overflow-x-hidden">
+    <SectionShell>
       <div className="flex flex-col sm:flex-row justify-center sm:gap-20">
         <p className={`${bigMaker.className} text-9xl text-center scale-200`}>
-          Blog
+          {header.title}
         </p>
         <div className="text-center sm:text-left">
-          <p className={`text-3xl`}>La Novia de hoy:</p>
-          <p className={`text-xl`}>El nuevo lujo</p>
+          <p className="text-3xl">{header.subtitle}</p>
+          <p className="text-xl">{header.tagline}</p>
         </div>
       </div>
+
       <div className="flex flex-col sm:flex-row gap-10">
         <div className="w-full sm:w-2/3">
           <div className="min-w-0 pt-0 lg:pt-2 text-lg">
-            <p>Quién es la Novia de Hoy?</p>
-            <p>Es una novia que:</p>
+            {intro.lead.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
             <ul className="list-disc pl-5 wrap-break-word">
-              <li>Prioriza la calidad por sobre la cantidad</li>
-              <li>Entiende que el lujo está en los detalles</li>
-              <li>Se ve elegante sin esfuerzo</li>
-              <li>No necesita aprobación, confía en su criterio</li>
+              {intro.bullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
-            <p>La Novia de Hoy no grita tendencia</p>
-            <p>La encarna</p>
+            {intro.closing.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
           </div>
-          <div className="mt-8 flex items-start gap-2 text-lg sm:mt-12 sm:text-2xl">
-            <BsQuote className="shrink-0" />
-            <p className="w-fit min-w-0">
-              Una serie creada para novias que no siguen tendencias, las
-              interpretan con criterio, estilo y decisión.
-            </p>
-            <BsQuote className="mt-8 rotate-180 shrink-0 sm:mt-14" />
-          </div>
+          <QuoteBlock text={quotes.recurring} />
         </div>
         <Image
-          src="/assets/blog1.jpg"
-          alt="Novia del blog"
-          width={500}
-          height={900}
+          src={intro.image.src}
+          alt={intro.image.alt}
+          width={intro.image.width}
+          height={intro.image.height}
           className="w-full sm:w-1/3 rounded-2xl"
         />
       </div>
-      <p className="text-xl text-center py-10">
-        Las tendencias para novias 2026 apuntan a una estética más consciente y
-        refinada, menos exceso, más intención. En esta guía te mostramos los
-        estilos que están marcando el rumbo de la nueva temporada.
-      </p>
+
+      <p className="text-xl text-center py-10">{sections.trendsLead}</p>
+
       <div className="flex flex-col sm:flex-row gap-10">
         <Image
-          src="/assets/blog2.jpg"
-          alt="Novia del blog"
-          width={500}
-          height={900}
+          src={images.consciousness.src}
+          alt={images.consciousness.alt}
+          width={images.consciousness.width}
+          height={images.consciousness.height}
           className="w-full sm:w-1/3 rounded-2xl"
         />
         <div className="w-full sm:w-2/3">
-          <div className="flex items-start gap-2 text-lg sm:mt-12 sm:text-2xl">
-            <BsQuote className="shrink-0" />
-            <p className="w-fit min-w-0 font-bold">
-              Menos exceso, más intención
-            </p>
-            <BsQuote className="mt-8 rotate-180 shrink-0" />
-          </div>
+          <QuoteBlock
+            text={quotes.intention}
+            className="flex items-start gap-2 text-lg sm:mt-12 sm:text-2xl"
+            textClassName="w-fit min-w-0 font-bold"
+            endQuoteClassName="mt-8 rotate-180 shrink-0"
+          />
           <div className="min-w-0 pt-0 lg:pt-2 text-lg space-y-6">
-            <p>La novia de hoy ya no busca impresionar.</p>
-            <p>
-              Busca sentirse representada. Atrás quedaron los looks
-              sobrecargados, las decisiones impulsivas y las bodas que se
-              parecen a todas.
-            </p>
-            <p>
-              La nueva novia es consciente, informada y segura. No elige por
-              moda, elige por coherencia.
-            </p>
-            <p>
-              Esta temporada marca un antes y un después en la estética nupcial:
-              menos exceso, más intención.
-            </p>
+            {sections.consciousness.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </div>
         </div>
       </div>
-      <p className="text-xl text-center py-10">
-        La estética que define esta nueva era bridal
-      </p>
+
+      <p className="text-xl text-center py-10">{sections.eraTitle}</p>
+
       <div className="flex flex-col sm:flex-row gap-10">
         <div className="w-full sm:w-2/3">
           <div className="min-w-0 pt-0 lg:pt-2 text-lg">
             <ul className="list-decimal pl-5 wrap-break-word">
-              <li>
-                Belleza real, no artificial Piel luminosa, maquillajes que
-                realzan sin transformar. El objetivo ya no es “verse producida”,
-                sino verse auténtica y pulida.
-              </li>
-              <li>
-                Peinados con intención Moños bajos, ondas suaves, texturas
-                controladas. Nada está fuera de lugar, pero nada se ve rígido.
-              </li>
-              <li>
-                Vestidos que hablan de la novia, no del diseñador Cortes
-                limpios, siluetas claras, telas nobles. Vestidos que envejecen
-                bien en el recuerdo y en las fotos.
-              </li>
+              {sections.eraBullets.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
             </ul>
           </div>
-          <div className="mt-8 flex items-start gap-2 text-lg sm:mt-12 sm:text-2xl">
-            <BsQuote className="shrink-0" />
-            <p className="w-fit min-w-0">
-              Una serie creada para novias que no siguen tendencias, las
-              interpretan con criterio, estilo y decisión.
-            </p>
-            <BsQuote className="mt-8 rotate-180 shrink-0 sm:mt-14" />
-          </div>
+          <QuoteBlock text={quotes.recurring} />
         </div>
         <Image
-          src="/assets/blog3.png"
-          alt="Novia del blog"
-          width={488}
-          height={1000}
+          src={images.era.src}
+          alt={images.era.alt}
+          width={images.era.width}
+          height={images.era.height}
           className="w-full sm:w-1/3 rounded-2xl"
         />
       </div>
+
       <div className="w-full">
         <div className="min-w-0 pt-0 lg:pt-2 text-lg">
-          <p className="text-xl pt-10">El nuevo lujo en las Bodas</p>
-          <p className="text-lg pb-10">El lujo hoy no es exceso, es:</p>
+          <p className="text-xl pt-10">{sections.luxuryTitle}</p>
+          <p className="text-lg pb-10">{sections.luxurySubtitle}</p>
           <ul className="list-disc pl-5 wrap-break-word">
-            <li>Tiempo bien invertido</li>
-            <li>Proveedores correctos</li>
-            <li>Decisiones tomadas con calma</li>
-            <li>Una estética que se siente natural</li>
+            {sections.luxuryBullets.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
-          <p className="py-6">
-            Las bodas más elegantes no son las más grandes, son las mejor
-            pensadas.
-          </p>
-          <p>
-            Después de años en la industria, hay algo claro: las bodas que
-            realmente funcionan no siguen todas las tendencias, siguen una línea
-            clara desde el inicio. Cuando una novia entiende quién es y qué
-            quiere transmitir, todo fluye: el vestido, la decoración, la música,
-            la experiencia. Ese es el verdadero secreto de una boda bien
-            lograda.
-          </p>
+          {sections.luxuryClosing.map((paragraph, index) => (
+            <p key={paragraph} className={index === 0 ? "py-6" : undefined}>
+              {paragraph}
+            </p>
+          ))}
           <Image
-            src="/assets/javieradiaz.png"
-            alt="Novia del blog"
-            width={400}
-            height={600}
+            src={images.author.src}
+            alt={images.author.alt}
+            width={images.author.width}
+            height={images.author.height}
             className="w-56 rounded-2xl ml-auto"
           />
         </div>
       </div>
-    </div>
+    </SectionShell>
   );
 };

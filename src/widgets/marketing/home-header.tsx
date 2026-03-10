@@ -1,22 +1,31 @@
+import { BurgerButton } from "@/shared/ui/burger-button";
 import { HeroBanner } from "@/shared/ui/hero-banner";
 import { TopBar } from "@/shared/ui/top-bar";
-import { BurgerButton } from "@/shared/ui/burger-button";
+import { HOME_HEADER_CONTENT } from "./data/home-header-data";
 
-export function HomeHeader() {
+type HomeHeaderProps = {
+  logoText?: string;
+  hero?: {
+    imageSrc: string;
+    imageAlt: string;
+    ctaLabel: string;
+    ctaScrollTargetId: string;
+  };
+};
+
+export function HomeHeader({
+  logoText = HOME_HEADER_CONTENT.logoText,
+  hero = HOME_HEADER_CONTENT.hero,
+}: HomeHeaderProps) {
   return (
     <header className="bg-primary">
       <div className="mx-auto max-w-6xl px-6">
         <div className="relative">
-          <TopBar logoText="TU BODA" />
+          <TopBar logoText={logoText} />
           <BurgerButton />
         </div>
-        <HeroBanner
-          imageSrc="/hero-banner.jpg"
-          imageAlt="Novios celebrando en su boda"
-          ctaLabel="COMENZAR MI PLANIFICACION"
-          ctaScrollTargetId="the-wedding"
-        />
-        <TopBar logoText="TU BODA" />
+        <HeroBanner {...hero} />
+        <TopBar logoText={logoText} />
       </div>
     </header>
   );
