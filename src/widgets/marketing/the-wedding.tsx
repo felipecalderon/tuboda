@@ -3,7 +3,7 @@ import { LogoTuBoda } from "@/shared/ui/logo-tuboda";
 import { THE_WEDDING_CONTENT } from "@/widgets/marketing/data/the-wedding-data";
 import type { ReactNode } from "react";
 import { bigMaker } from "../../../app/fonts";
-import { QuoteBlock } from "./components/quote-block";
+import { QuoteBlock } from "../../shared/components/quote-block";
 
 type TheWeddingContent = {
   titlePrimary: string;

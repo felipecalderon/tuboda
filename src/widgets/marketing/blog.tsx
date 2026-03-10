@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { bigMaker } from "../../../app/fonts";
-import { QuoteBlock } from "./components/quote-block";
-import { SectionShell } from "./components/section-shell";
+import { QuoteBlock } from "../../shared/components/quote-block";
+import { SectionShell } from "../../shared/components/section-shell";
 import {
   BLOG_HEADER,
   BLOG_IMAGES,

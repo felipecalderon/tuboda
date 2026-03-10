@@ -3,7 +3,7 @@ import { events as defaultEvents } from "@/shared/config/events";
 import { EventLogo } from "@/shared/ui/event-logo";
 import { HorizontalGalleryST } from "@/shared/ui/gallery-horizontal-static";
 import Image from "next/image";
-import { SectionShell } from "./components/section-shell";
+import { SectionShell } from "../../shared/components/section-shell";
 import { EVENTS_CONTENT } from "./data/events-data";
 
 type EventsProps = {
@@ -17,7 +17,9 @@ export const Events = ({
 }: EventsProps) => {
   return (
     <SectionShell>
-      <p className="text-left text-3xl leading-none sm:text-9xl">{content.title}</p>
+      <p className="text-left text-3xl leading-none sm:text-9xl">
+        {content.title}
+      </p>
       <div className="flex items-center gap-2 max-w-xl">
         <div className="h-px bg-gray-600 flex-1" />
         <span className="text-3xl">{content.subtitle}</span>

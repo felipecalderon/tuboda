@@ -1,6 +1,6 @@
 import { BusinessRequestForm } from "@/shared/ui/business-request-form";
 import type { ReactNode } from "react";
-import { SectionShell } from "./components/section-shell";
+import { SectionShell } from "../../shared/components/section-shell";
 import { SOY_EMPRESA_CONTENT } from "./data/soy-empresa-data";
 
 type SoyEmpresaProps = {

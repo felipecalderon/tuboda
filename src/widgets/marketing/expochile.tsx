@@ -1,5 +1,5 @@
 import { bigMaker } from "../../../app/fonts";
-import { SectionShell } from "./components/section-shell";
+import { SectionShell } from "../../shared/components/section-shell";
 import { EXPO_CHILE_CONTENT } from "./data/expo-chile-data";
 
 type ExpoChileProps = {
@@ -12,7 +12,9 @@ export const ExpoChile = ({ content = EXPO_CHILE_CONTENT }: ExpoChileProps) => {
       <div className="flex flex-col sm:flex-row justify-center sm:gap-20">
         <div className="text-center">
           <p className="text-8xl uppercase">{content.title}</p>
-          <p className={`${bigMaker.className} text-9xl text-amber-600 scale-200`}>
+          <p
+            className={`${bigMaker.className} text-9xl text-amber-600 scale-200`}
+          >
             {content.highlight}
           </p>
         </div>
